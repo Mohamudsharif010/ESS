@@ -1,0 +1,14 @@
+ESS Project Timeline
+
+Ticket 1 - Reports - Daily, Weekly, Monthly
+Ticket 2 - Product Page - Requisition of items(Gears and Tools, Spareparts, PPE(Overals, Shirts))
+Ticket 3 - Leave - Request leaves, Approve, Cancel and Deny 
+Ticket 4 - Petty Cash - Money used on behalf of the company
+Ticket 5 - Events - Calendar events and company updates, Newsletter
+
+
+Clock in and Clock out - Later
+
+
+
+

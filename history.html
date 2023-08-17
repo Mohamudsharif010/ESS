@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Procurement Data</title>
+</head>
+<body>
+    <h1>Procurement Data</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Total Cost</th>
+        </tr>
+        <?php
+            // Set database connection details
+            $host = "localhost";
+            $username = "your_mysql_username";
+            $password = "your_mysql_password";
+            $database = "your_database_name";
+
+            // Connect to the database
+            $conn = mysqli_connect($host, $username, $password, $database);
+
+            // Check connection
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+
+            // Select all procurement data from the database
+            $sql = "SELECT * FROM procurement_data";
+            $result = mysqli_query($conn, $sql);
+
+            // Loop through each row of procurement data and output it in the HTML table
+            while($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>";
+                echo "<td>" . $row["id"] . "</td>";
+                echo "<td>" . $row["item_name"] . "</td>";
+                echo "<td>" . $row["quantity"] . "</td>";
+                echo "<td>" . $row["unit_price"] . "</td>";
+                echo "<td>" . $row["total_cost"] . "</td>";
+                echo "</tr>";
+            }
+
+            // Close database connection
+            mysqli_close($conn);
+        ?>
+    </table>
+
+</body>
+</html>
