@@ -428,7 +428,7 @@
                 <a href="dashboard.php" class="active">Dashboard</a>
 
                 <a href="tasks.php">Tasks</a>
-                <a href="upload.php">Upload</a>
+                <!-- <a href="upload.php">Upload</a> -->
                 <a href="#">Product
                     <a href="display_page.php">View Product</a>
                     <a href="product.php">Add Product</a>

@@ -76,7 +76,7 @@
 			<a href="production.php"><button>Production</button></a>
 			<a href="digital.php"><button>Digital Marketing</button></a>
 			<a href="sales.php"><button>Sales</button></a>
-			<a href="project.php"><button>Customer Service</button></a>
+			<a href="customer.php"><button>Customer Service</button></a>
 
 
 		</div>

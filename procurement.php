@@ -1,15 +1,34 @@
+<style>
+  .promo-card-container {
+    display: flex; /* Use flexbox to align items side by side */
+}
+
+.promo_card {
+    flex: 1; /* Distribute available space equally */
+    margin: 0 10px; /* Add some spacing between the cards */
+    background-color: #f5f5f5; /* Example background color */
+    padding: 20px; /* Example padding */
+    border: 1px solid #ddd; /* Example border */
+}
+
+</style>
 <body>
   <?php include 'header.php'; ?>
   <div class="main-body">
-    <h2>Dashboard</h2>
+    <h2 style="text-align: center;">Reports</h2>
+    <div class="promo-card-container">
     <div class="promo_card">
-      <h1>Welcome to Procurement page</h1>
-      <span>Direct quotation, indirect quotation, and passing off.</span>
-      <a href="https://volkselevator.co.ke/" target="_blank"><button>Learn More</button></a>
+        <h1>Weekly Reports</h1>
+        <span>Upload your Weekly reports here</span>
+        <a href="upload.php"><button>Upload</button></a>
     </div>
-
-
-    <?php
+    <div class="promo_card">
+        <h1>Monthly Reports</h1>
+        <span>Upload your Monthly reports here</span>
+        <a href="upload.php"><button>Upload</button></a>
+    </div>
+</div>
+<?php
     // Retrieve file records from the database
     $dbHost = "localhost";
     $dbUser = "username";
@@ -122,7 +141,6 @@
     <?php else : ?>
       <p>No files uploaded yet.</p>
     <?php endif; ?>
-
 </body>
 
 </html>

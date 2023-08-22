@@ -1,5 +1,6 @@
-<body>
-    <?php include 'header.php'; ?>
+<?php
+ob_start(); 
+    include 'header.php'; ?>
     <?php
     // Retrieve file records from the database
     $dbHost = "localhost";
@@ -84,3 +85,7 @@
             }
         }
     }
+?>
+<?php
+ob_end_flush();
+?>

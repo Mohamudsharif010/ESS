@@ -1,4 +1,5 @@
 <?php
+ob_start();
 // Retrieve the file ID from the URL parameter
 if (isset($_GET["id"])) {
     $fileId = $_GET["id"];
@@ -44,7 +45,12 @@ if (isset($_GET["id"])) {
     header("Location: upload_handler.php");
     exit();
 } else {
+   
     // Redirect back to the uploaded files page if no file ID is provided
-    header("Location: procurement.php");
+    header("Location: Location: uploaded_files.php");
     exit();
 }
+?>
+<?php
+ob_end_flush();
+?>

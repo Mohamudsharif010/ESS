@@ -1,4 +1,40 @@
+<?php
+session_start();
 
+// Existing login logic
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	$username = $_POST["username"];
+	$password = $_POST["password"];
+
+	// Query the database and verify the password
+	$query = "SELECT * FROM users WHERE username = '$username'";
+	$result = $connection->query($query);
+	if (!$result) {
+		echo "Query failed: " . $connection->error;
+	}
+	
+	if ($result->num_rows === 1) {
+		$row = $result->fetch_assoc();
+		$hashed_password = $row["password"];
+
+		if (password_verify($password, $hashed_password)) {
+			// Set session variables for the logged-in user
+			$_SESSION["username"] = $username;
+			$_SESSION["empId"] = $row["EmpId"];
+			$_SESSION["firstName"] = $row["FirstName"];
+
+			// Redirect to dashboard after successful login
+			header("Location: dashboard.php");
+			exit();
+		} else {
+			$login_error = "Invalid username or password";
+		}
+	} else {
+		$login_error = "Invalid username or password";
+	}
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
