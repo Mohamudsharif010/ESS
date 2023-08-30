@@ -43,6 +43,8 @@
     <div class="leave">
         <h2 style="text-align: center;">Leave Request Form</h2>
         <form action=" submit_leave_request.php" method="post">
+            <label for="employee_name">Employee Name</label>
+            <input type="text" name="employee_name" required><br>
 
             <label for="leave_type">Leave Type:</label>
             <select name="leave_type" required>

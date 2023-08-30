@@ -1,40 +1,43 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 session_start();
 
-// Existing login logic
+include("db_connect.php"); // Include your database connection file
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	$username = $_POST["username"];
-	$password = $_POST["password"];
+    $empId = $_POST["username"]; // Using 'username' field for EmpId
+    $password = $_POST["password"];
 
-	// Query the database and verify the password
-	$query = "SELECT * FROM users WHERE username = '$username'";
-	$result = $connection->query($query);
-	if (!$result) {
-		echo "Query failed: " . $connection->error;
-	}
-	
-	if ($result->num_rows === 1) {
-		$row = $result->fetch_assoc();
-		$hashed_password = $row["password"];
+    // Query the database and verify the password
+    $query = "SELECT * FROM users WHERE EmpId = '$empId'";
+    $result = $connection->query($query);
+    if ($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
+        $hashed_password = $row["Password"];
 
-		if (password_verify($password, $hashed_password)) {
-			// Set session variables for the logged-in user
-			$_SESSION["username"] = $username;
-			$_SESSION["empId"] = $row["EmpId"];
-			$_SESSION["firstName"] = $row["FirstName"];
+        if (password_verify($password, $hashed_password)) {
+            $status = $row["Status"]; // Fetch status from the database
 
-			// Redirect to dashboard after successful login
-			header("Location: dashboard.php");
-			exit();
-		} else {
-			$login_error = "Invalid username or password";
-		}
-	} else {
-		$login_error = "Invalid username or password";
-	}
+            if ($status == 0) {
+                $login_error = "Your account is Inactive. Please contact admin";
+            } else {
+                $_SESSION["empId"] = $empId;
+                $_SESSION["firstName"] = $row["FirstName"];
+                header("Location: emp-changepassword.php"); // Change to the appropriate page
+                exit();
+            }
+        } else {
+            $login_error = "Invalid EmpId or password";
+        }
+    } else {
+        $login_error = "Invalid EmpId or password";
+    }
 }
+var_dump($result->num_rows);
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -122,27 +125,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-	<div class="header">
-		<img src="./images/Volks.png" alt="Volks Elevator Logo">
-		<h1>Volks Elevator</h1>
-	</div>
-	<div class="login-container">
-		<h2>Login</h2>
-		<form method="POST" action="procurement.php">
-			<div class="form-group">
-				<label for="username">Username:</label>
-				<input type="text" id="username" name="username" required>
-			</div>
-			<div class="form-group">
-				<label for="password">Password:</label>
-				<input type="password" id="password" name="password" required>
-			</div>
-			<button type="submit" class="btn">Login</button>
-		</form>
-	</div>
-	<script>
-
-	</script>
+    <div class="header">
+        <img src="./images/Volks.png" alt="Volks Elevator Logo">
+        <h1>Volks Elevator</h1>
+    </div>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form method="POST" action="procurement.php">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <?php if (isset($login_error)) { ?>
+            <div class="error"><?php echo $login_error; ?></div>
+        <?php } ?>
+    </div>
+    <script>
+        // JavaScript code
+    </script>
 </body>
 
 </html>

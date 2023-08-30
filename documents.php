@@ -88,7 +88,7 @@
     <div id="documents-page">
         <div class="docs">
             <h1>2021 Docs: </h1>
-            <a href="" target="_blank"><i class="fa-solid fa-folder"></i></a>
+            <a href="sales.php"><i class="fa-solid fa-folder"></i></a>
             <a href="" target="_blank"><i class="fa-solid fa-folder"></i></a>
             <a href="" target="_blank"><i class="fa-solid fa-folder"></i></a>
             <a href="" target="_blank"><i class="fa-solid fa-folder"></i></a>

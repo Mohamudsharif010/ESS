@@ -8,16 +8,18 @@
 
 <body>
     <?php include 'header.php' ?>
-    <h2 style="text-align: center; margin-bottom: 20px;">Leave Requests</h2>
+    <div>
     <!-- Display the list of leave requests -->
+    <h2 style="text-align: center; margin-bottom: 20px;">Leave Requests</h2>
     <?php
     // Replace 'username', 'password', and 'files' with your actual database credentials
     $db_conn = mysqli_connect('localhost', 'username', 'password', 'files');
 
     if (!$db_conn) {
         die("Connection failed: " . mysqli_connect_error());
-    }
+    }   
 
+    
     // Retrieve leave requests from the database
     $query = "SELECT * FROM leave_requests";
     $result = mysqli_query($db_conn, $query);
@@ -51,6 +53,8 @@
 
     mysqli_close($db_conn);
     ?>
+    </div>
+    
 </body>
 
 </html>

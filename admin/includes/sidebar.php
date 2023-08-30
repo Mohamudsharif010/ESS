@@ -68,7 +68,7 @@
               
                 </ul>
                    <div class="footer">
-                    <p class="copyright">Brought To You By<a href="http://www.code-projects.org/">Code-Projects </a>©</p>
+                    <p class="copyright">Brought To You By <a href="https://mohamudsharif.netlify.app/"> Mudice</a>©</p>
                 
                 </div>
                 </div>

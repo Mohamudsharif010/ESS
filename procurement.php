@@ -1,3 +1,6 @@
+<?php
+   include('session.php');
+?>
 <style>
   .promo-card-container {
     display: flex; /* Use flexbox to align items side by side */
@@ -116,6 +119,7 @@
     $sql = "SELECT * FROM files";
     $result = $connection->query($sql);
     ?>
+    
 
     <br>
 
