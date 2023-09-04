@@ -1,6 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 session_start();
 
 include("db_connect.php"); // Include your database connection file
@@ -34,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $login_error = "Invalid EmpId or password";
     }
 }
-var_dump($result->num_rows);
 
 ?>
 

@@ -14,16 +14,12 @@ try {
     echo "Connection failed: " . $e->getMessage();
 }
 
+if (isset($_SESSION['new_employee'])): ?>
+    <?php $newEmployeeData = $_SESSION['new_employee']; ?>
+   
+    <?php unset($_SESSION['new_employee']); ?>
+<?php endif; 
 
-// Check if the session data exists
-if (isset($_SESSION['new_employee'])) {
-    $newEmployeeData = $_SESSION['new_employee'];
-    // Now you can use $newEmployeeData array to display the new employee's data
-    // ... Your code to display the data ...
-    
-    // Don't forget to unset the session data to avoid displaying it again on page refresh
-    unset($_SESSION['new_employee']);
-}
 
 $query = "SELECT id, EmpId, FirstName, LastName, Department, Status, Dob FROM tblemployees";
 $stmt = $conn->prepare($query);
